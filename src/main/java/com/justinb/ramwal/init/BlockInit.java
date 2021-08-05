@@ -3,6 +3,7 @@ package com.justinb.ramwal.init;
 import com.justinb.ramwal.Main;
 import com.justinb.ramwal.blocks.Glitch;
 import com.justinb.ramwal.blocks.LemonSpawnerIBlock;
+import com.justinb.ramwal.blocks.LemonSpawnerIIBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -25,6 +26,14 @@ public class BlockInit {
 
     public static final RegistryObject<Block> LEMONSPAWNERI = BLOCKS.register("lemonspawneri",
             () -> new LemonSpawnerIBlock(AbstractBlock.Properties.create(Material.IRON)
+                    .hardnessAndResistance(0.8f)
+                    .sound(SoundType.STONE)
+                    .harvestLevel(0)
+                    .harvestTool(ToolType.PICKAXE)
+                    .setRequiresTool()));
+
+    public static final RegistryObject<Block> LEMONSPAWNERII = BLOCKS.register("lemonspawnerii",
+            () -> new LemonSpawnerIIBlock(AbstractBlock.Properties.create(Material.IRON)
                     .hardnessAndResistance(0.8f)
                     .sound(SoundType.STONE)
                     .harvestLevel(0)

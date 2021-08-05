@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#L#",
+    "CGC",
+    "#L#"
+  ],
+  "key": {
+    "#": {
+      "item": "ramwal:lemon"
+    },
+    "C": {
+      "item": "ramwal:glitch"
+    },
+    "L": {
+      "item": "ramwal:lemonspawneri"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "result": {
+    "item": "ramwal:lemonspawnerii",
+    "count": 1
+  }
+}

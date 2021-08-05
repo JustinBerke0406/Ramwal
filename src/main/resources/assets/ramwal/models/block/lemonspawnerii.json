@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "ramwal:blocks/lemonspawneriitop",
+    "front": "ramwal:blocks/lemonspawnerii",
+    "side": "ramwal:blocks/lemonspawnerii"
+  }
+}

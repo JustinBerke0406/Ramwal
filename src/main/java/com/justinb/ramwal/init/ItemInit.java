@@ -60,6 +60,9 @@ public class ItemInit {
     public static final RegistryObject<BlockItem> LEMONSPAWNERI = ITEMS.register("lemonspawneri",
             () -> new BlockItem(BlockInit.LEMONSPAWNERI.get(), new Item.Properties().group(ModItemGroup.instance)));
 
+    public static final RegistryObject<BlockItem> LEMONSPAWNERII = ITEMS.register("lemonspawnerii",
+            () -> new BlockItem(BlockInit.LEMONSPAWNERII.get(), new Item.Properties().group(ModItemGroup.instance)));
+
     public static class ModItemGroup extends ItemGroup {
         public static final ModItemGroup instance = new ModItemGroup(ItemGroup.GROUPS.length, "ramwal");
 
