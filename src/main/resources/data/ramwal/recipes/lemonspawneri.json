@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "RIR",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "ramwal:lemon"
+    },
+    "R": {
+      "item": "ramwal:glitch"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "ramwal:lemonspawneri",
+    "count": 1
+  }
+}
