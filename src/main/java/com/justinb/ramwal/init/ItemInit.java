@@ -1,10 +1,7 @@
 package com.justinb.ramwal.init;
 
 import com.justinb.ramwal.Main;
-import com.justinb.ramwal.items.LemonItem;
-import com.justinb.ramwal.items.LemonadeItem;
-import com.justinb.ramwal.items.PinkLemonItem;
-import com.justinb.ramwal.items.PinkLemonadeItem;
+import com.justinb.ramwal.items.*;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -50,6 +47,14 @@ public class ItemInit {
                     .effect(() -> new EffectInstance(Effects.SPEED, 600, 2), 1.0f)
                     .effect(() -> new EffectInstance(Effects.WEAKNESS, 200, 1), 0.1f)
                     .effect(() -> new EffectInstance(EffectInit.SUGARRUSH.get(), 200, 1), 0.3f)
+                    .build())));
+
+    public static final RegistryObject<Item> LIME = ITEMS.register("lime",
+            () -> new LimeItem(new Item.Properties().group(ModItemGroup.instance).food(new Food.Builder()
+                    .effect(() -> new EffectInstance(Effects.MINING_FATIGUE, 200, 2), 1.0f)
+                    .saturation(0.6f)
+                    .hunger(3)
+                    .setAlwaysEdible()
                     .build())));
 
     //Block items ---------------------------------------------------------------------------

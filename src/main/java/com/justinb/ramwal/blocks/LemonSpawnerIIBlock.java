@@ -47,7 +47,7 @@ public class LemonSpawnerIIBlock extends Block {
         Item ent = ItemInit.PINK_LEMON.get();
 
         if (new Random().nextInt(100/GREEN_CHANCE) == 0)
-            ent = ItemInit.PINK_LEMON.get(); //TODO change to lime
+            ent = ItemInit.LIME.get();
 
         ItemStack itemstack = new ItemStack(ent);
         IDispenseItemBehavior idispenseitembehavior = this.getBehavior(itemstack);
