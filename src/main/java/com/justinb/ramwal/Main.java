@@ -1,16 +1,20 @@
 package com.justinb.ramwal;
 
-import com.justinb.ramwal.init.BlockInit;
-import com.justinb.ramwal.init.EffectInit;
-import com.justinb.ramwal.init.ItemInit;
-import com.justinb.ramwal.init.LootModifierInit;
+import com.justinb.ramwal.init.*;
 import com.justinb.ramwal.network.NetworkHandler;
 import com.justinb.ramwal.rendering.SugarRushRender;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.loot.conditions.LootConditionManager;
 import net.minecraft.loot.functions.LootFunctionManager;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionUtils;
+import net.minecraft.potion.Potions;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -55,6 +59,7 @@ public class Main
         BlockInit.BLOCKS.register(bus);
         ItemInit.ITEMS.register(bus);
         EffectInit.EFFECTS.register(bus);
+        PotionInit.POTIONS.register(bus);
         LootModifierInit.SERIALIZERS.register(bus);
 
         NetworkHandler.init();
@@ -62,6 +67,11 @@ public class Main
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        BrewingRecipeRegistry.addRecipe(
+                Ingredient.fromStacks(PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), Potions.SWIFTNESS)),
+                Ingredient.fromItems(ItemInit.PINK_LEMON.get()),
+                PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), PotionInit.SUGARRUSH.get()));
+
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());

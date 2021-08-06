@@ -11,5 +11,10 @@
   "block.ramwal.lemonspawneri": "Lemon Spawner (Tier I)",
   "block.ramwal.lemonspawnerii": "Lemon Spawner (Tier II)",
 
-  "effect.ramwal.sugarrush": "Sugar Rush"
+  "effect.ramwal.sugarrush": "Sugar Rush",
+
+  "item.minecraft.potion.effect.sugarrush": "Sugar Rush Potion",
+  "item.minecraft.splash_potion.effect.sugarrush": "Sugar Rush Splash Potion",
+  "item.minecraft.lingering_potion.effect.sugarrush": "Sugar Rush Lingering Potion",
+  "item.minecraft.tipped_arrow.effect.sugarrush": "Sugar Rush Arrow"
 }
