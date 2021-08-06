@@ -57,6 +57,17 @@ public class ItemInit {
                     .setAlwaysEdible()
                     .build())));
 
+    public static final RegistryObject<Item> LIMEADE = ITEMS.register("limeade",
+            () -> new LimeadeItem(new Item.Properties().maxStackSize(1).group(ModItemGroup.instance).food(new Food.Builder()
+                    .hunger(0)
+                    .saturation(0)
+                    .setAlwaysEdible()
+                    .effect(() -> new EffectInstance(Effects.HASTE, 600, 2), 1.0f)
+                    .effect(() -> new EffectInstance(Effects.SPEED, 600, 2), 1.0f)
+                    .effect(() -> new EffectInstance(Effects.MINING_FATIGUE, 200, 1), 0.1f)
+                    .effect(() -> new EffectInstance(EffectInit.SUGARRUSH.get(), 200, 2), 0.3f)
+                    .build())));
+
     //Block items ---------------------------------------------------------------------------
 
     public static final RegistryObject<BlockItem> GLITCH = ITEMS.register("glitch",
