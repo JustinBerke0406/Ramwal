@@ -9,5 +9,7 @@
 
   "block.ramwal.glitch": "Corrupted Block",
   "block.ramwal.lemonspawneri": "Lemon Spawner (Tier I)",
-  "block.ramwal.lemonspawnerii": "Lemon Spawner (Tier II)"
+  "block.ramwal.lemonspawnerii": "Lemon Spawner (Tier II)",
+
+  "effect.ramwal.sugarrush": "Sugar Rush Effect"
 }
