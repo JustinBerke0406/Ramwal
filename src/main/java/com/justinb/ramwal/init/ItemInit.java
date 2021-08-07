@@ -5,6 +5,7 @@ import com.justinb.ramwal.items.*;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.SoundEvents;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -67,6 +68,13 @@ public class ItemInit {
                     .effect(() -> new EffectInstance(Effects.MINING_FATIGUE, 200, 1), 0.1f)
                     .effect(() -> new EffectInstance(EffectInit.SUGARRUSH.get(), 200, 2), 0.3f)
                     .build())));
+
+    //Disc
+    public static final RegistryObject<MusicDiscItem> RAMWAL = ITEMS.register("music_disc_owner",
+            () -> new MusicDiscItem(14, SoundInit.RAMWAL, (new Item.Properties())
+                    .maxStackSize(1)
+                    .group(ItemGroup.MISC)
+                    .rarity(Rarity.RARE)));
 
     //Block items ---------------------------------------------------------------------------
 

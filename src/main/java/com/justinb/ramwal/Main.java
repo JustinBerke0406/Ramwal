@@ -56,6 +56,7 @@ public class Main
         MinecraftForge.EVENT_BUS.register(SugarRushRender.class);
 
         //Register mod stuff
+        SoundInit.SOUNDS.register(bus);
         BlockInit.BLOCKS.register(bus);
         ItemInit.ITEMS.register(bus);
         EffectInit.EFFECTS.register(bus);
@@ -63,6 +64,10 @@ public class Main
         LootModifierInit.SERIALIZERS.register(bus);
 
         NetworkHandler.init();
+    }
+
+    private void register() {
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
     }
 
     private void setup(final FMLCommonSetupEvent event)

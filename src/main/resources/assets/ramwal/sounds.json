@@ -1,0 +1,11 @@
+{
+  "music_disc_owner": {
+    "sounds": [
+      {
+        "category": "record",
+        "name": "ramwal:music_disc_owner",
+        "stream": true
+      }
+    ]
+  }
+}
