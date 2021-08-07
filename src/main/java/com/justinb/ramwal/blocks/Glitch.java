@@ -33,7 +33,7 @@ public class Glitch extends Block {
             if (canSpread(s)) {
                 Random rands = new Random();
                 if (rands.nextInt(SPREAD_RATE) == 0) {
-                    NetworkHandler.sendToServer(new SpreadPacket(blockPos.getX(), blockPos.getY(), blockPos.getZ()));
+                    NetworkHandler.sendToServer(new SpreadPacket(blockPos.getX(), blockPos.getY(), blockPos.getZ(), "ramwal:glitch"));
                 }
             }
         }

@@ -25,11 +25,9 @@ public class LemonItem extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         BlockPos pos = entityLiving.getPosition();
 
-        entityLiving.playSound(SoundInit.RAMWAL.get(), 5f, 5f);
-
         if (worldIn.isRemote() && Glitch.canSpread(worldIn.getBlockState(pos.down())))
             if (new Random().nextInt(100/SPAWN_CHANCE) == 0)
-                NetworkHandler.sendToServer(new SpreadPacket(pos.getX(), pos.getY() - 1, pos.getZ()));
+                NetworkHandler.sendToServer(new SpreadPacket(pos.getX(), pos.getY() - 1, pos.getZ(), "ramwal:glitch"));
 
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }
