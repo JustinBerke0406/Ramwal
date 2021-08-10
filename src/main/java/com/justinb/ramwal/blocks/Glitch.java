@@ -80,7 +80,9 @@ public class Glitch extends Block {
                 !s.getBlock().equals(Blocks.BEDROCK) &&
                 !s.getBlock().equals(Blocks.END_PORTAL_FRAME) &&
                 !s.getBlock().equals(Blocks.OBSIDIAN) &&
-                !(s.getBlock() instanceof Glitch));
+                !(s.getBlock() instanceof Glitch) ||
+                s.getMaterial().equals(Material.GLASS) ||
+                s.getMaterial().equals(Material.LEAVES));
     }
 
     @Nullable
