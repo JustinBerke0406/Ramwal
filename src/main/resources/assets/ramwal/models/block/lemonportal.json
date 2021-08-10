@@ -1,0 +1,7 @@
+{
+    "textures": {
+        "particle": "ramwal:blocks/lemonportal",
+        "portal": "ramwal:blocks/glitch",
+        "layer0": "ramwal:blocks/glitch"
+    }
+}

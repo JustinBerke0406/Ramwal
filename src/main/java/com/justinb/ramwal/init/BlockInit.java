@@ -2,6 +2,7 @@ package com.justinb.ramwal.init;
 
 import com.justinb.ramwal.Main;
 import com.justinb.ramwal.blocks.Glitch;
+import com.justinb.ramwal.blocks.LemonPortalBlock;
 import com.justinb.ramwal.blocks.LemonSpawnerIBlock;
 import com.justinb.ramwal.blocks.LemonSpawnerIIBlock;
 import net.minecraft.block.AbstractBlock;
@@ -39,4 +40,11 @@ public class BlockInit {
                     .harvestLevel(0)
                     .harvestTool(ToolType.PICKAXE)
                     .setRequiresTool()));
+
+    public static final RegistryObject<Block> LEMONPORTAL = BLOCKS.register("lemonportal",
+            () -> new LemonPortalBlock(AbstractBlock.Properties.create(Material.PORTAL)
+                    .hardnessAndResistance(-1f)
+                    .sound(SoundType.GLASS)
+                    .doesNotBlockMovement()
+                    .setLightLevel((state) -> 2)));
 }

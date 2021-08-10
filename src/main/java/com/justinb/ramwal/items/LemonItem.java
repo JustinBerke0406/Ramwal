@@ -27,7 +27,7 @@ public class LemonItem extends Item {
 
         if (worldIn.isRemote() && Glitch.canSpread(worldIn.getBlockState(pos.down())))
             if (new Random().nextInt(100/SPAWN_CHANCE) == 0)
-                NetworkHandler.sendToServer(new SpreadPacket(pos.getX(), pos.getY() - 1, pos.getZ(), "ramwal:glitch"));
+                NetworkHandler.sendToServer(new SpreadPacket("ramwal:glitch", pos.down()));
 
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

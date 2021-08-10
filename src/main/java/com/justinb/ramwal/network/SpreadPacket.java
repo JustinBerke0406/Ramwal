@@ -1,8 +1,6 @@
 package com.justinb.ramwal.network;
 
-import com.justinb.ramwal.init.BlockInit;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -15,37 +13,29 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class SpreadPacket {
-    private final int x;
-    private final int y;
-    private final int z;
     private final String block;
+    private final BlockPos pos;
 
     public SpreadPacket(PacketBuffer buf) {
-        this.x = buf.readInt();
-        this.y = buf.readInt();
-        this.z = buf.readInt();
         this.block = buf.readString();
+        this.pos = buf.readBlockPos();
     }
 
-    public SpreadPacket(int x, int y, int z, String block) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public SpreadPacket(String block, BlockPos pos) {
         this.block = block;
+        this.pos = pos;
     }
 
     void encode(PacketBuffer buf) {
-        buf.writeInt(x);
-        buf.writeInt(y);
-        buf.writeInt(z);
         buf.writeString(block);
+        buf.writeBlockPos(pos);
     }
 
     void handle(Supplier<NetworkEvent.Context> context) {
         NetworkEvent.Context cont = context.get();
         cont.enqueueWork(
                 () -> DistExecutor.safeRunWhenOn(Dist.CLIENT,
-                        () -> Handle.handler(cont.getSender().getServerWorld(), new BlockPos(x, y, z), block)));
+                        () -> Handle.handler(cont.getSender().getServerWorld(), pos, block)));
         cont.setPacketHandled(true);
     }
 

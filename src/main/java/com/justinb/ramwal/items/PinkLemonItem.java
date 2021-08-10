@@ -72,8 +72,6 @@ public class PinkLemonItem extends Item {
 
         Field field;
         try {
-            System.out.println(creeper.getClass().getName());
-
             field = creeper.getClass().getDeclaredField("POWERED");
             field.setAccessible(true);
             DataParameter<Boolean> powered = (DataParameter<Boolean>) field.get(creeper);

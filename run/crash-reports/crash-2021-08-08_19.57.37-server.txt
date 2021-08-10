@@ -1,0 +1,100 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 8/8/21, 7:57 PM
+Description: Exception while ticking
+
+java.lang.NullPointerException: Exception while ticking
+	at net.minecraftforge.fml.network.simple.SimpleChannel.sendToServer(SimpleChannel.java:104) ~[forge:?] {re:classloading}
+	at com.justinb.ramwal.network.NetworkHandler.sendToServer(NetworkHandler.java:18) ~[?:?] {re:classloading}
+	at com.justinb.ramwal.blocks.Glitch.tick(Glitch.java:57) ~[?:?] {re:classloading}
+	at net.minecraft.block.AbstractBlock$AbstractBlockState.tick(AbstractBlock.java:712) ~[forge:?] {re:classloading}
+	at net.minecraft.world.server.ServerWorld.tickBlock(ServerWorld.java:603) ~[forge:?] {re:classloading}
+	at net.minecraft.world.server.ServerTickList.tick(ServerTickList.java:83) ~[forge:?] {re:classloading}
+	at net.minecraft.world.server.ServerWorld.tick(ServerWorld.java:339) ~[forge:?] {re:classloading}
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:885) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:821) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:84) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.func_240802_v_(MinecraftServer.java:664) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$startServer$0(MinecraftServer.java:233) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:829) [?:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at net.minecraftforge.fml.network.simple.SimpleChannel.sendToServer(SimpleChannel.java:104) ~[forge:?] {re:classloading}
+	at com.justinb.ramwal.network.NetworkHandler.sendToServer(NetworkHandler.java:18) ~[?:?] {re:classloading}
+	at com.justinb.ramwal.blocks.Glitch.tick(Glitch.java:57) ~[?:?] {re:classloading}
+	at net.minecraft.block.AbstractBlock$AbstractBlockState.tick(AbstractBlock.java:712) ~[forge:?] {re:classloading}
+	at net.minecraft.world.server.ServerWorld.tickBlock(ServerWorld.java:603) ~[forge:?] {re:classloading}
+-- Block being ticked --
+Details:
+	Block location: World: (175,61,-96), Chunk: (at 15,3,0 in 10,-6; contains blocks 160,0,-96 to 175,255,-81), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,0,-512 to 511,255,-1)
+Stacktrace:
+	at net.minecraft.world.server.ServerTickList.tick(ServerTickList.java:83) ~[forge:?] {re:classloading}
+	at net.minecraft.world.server.ServerWorld.tick(ServerWorld.java:339) ~[forge:?] {re:classloading}
+
+
+-- Affected level --
+Details:
+	All players: 1 total; [ServerPlayerEntity['Dev'/788, l='ServerLevel[New World]', x=178.55, y=63.00, z=-96.66]]
+	Chunk stats: ServerChunkCache: 2179
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (171,63,-89), Chunk: (at 11,3,7 in 10,-6; contains blocks 160,0,-96 to 175,255,-81), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,0,-512 to 511,255,-1)
+	Level time: 279 game time, 279 day time
+	Level name: New World
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+	Level weather: Rain time: 71357 (now: false), thunder time: 98886 (now: false)
+	Known server brands: forge
+	Level was modded: true
+	Level storage version: 0x04ABD - Anvil
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:885) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:821) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:84) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.func_240802_v_(MinecraftServer.java:664) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$startServer$0(MinecraftServer.java:233) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:829) [?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 11.0.11, AdoptOpenJDK
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), AdoptOpenJDK
+	Memory: 815807488 bytes (778 MB) / 1883242496 bytes (1796 MB) up to 4273995776 bytes (4076 MB)
+	CPUs: 8
+	JVM Flags: 2 total; -XX:+IgnoreUnrecognizedVMOptions -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	ModLauncher: 8.0.9+86+master.3cf110c
+	ModLauncher launch target: fmluserdevclient
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		/mixin-0.8.2.jar mixin PLUGINSERVICE 
+		/eventbus-4.0.0.jar eventbus PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_snapshot_20210309-1.16.5-launcher.jar object_holder_definalize PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_snapshot_20210309-1.16.5-launcher.jar runtime_enum_extender PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_snapshot_20210309-1.16.5-launcher.jar capability_inject_definalize PLUGINSERVICE 
+		/accesstransformers-3.0.1.jar accesstransformer PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_snapshot_20210309-1.16.5-launcher.jar runtimedistcleaner PLUGINSERVICE 
+		/mixin-0.8.2.jar mixin TRANSFORMATIONSERVICE 
+		/forge-1.16.5-36.2.0_mapped_snapshot_20210309-1.16.5-launcher.jar fml TRANSFORMATIONSERVICE 
+	FML: 36.2
+	Forge: net.minecraftforge:36.2.0
+	FML Language Providers: 
+		javafml@36.2
+		minecraft@1
+	Mod List: 
+		client-extra.jar                                  |Minecraft                     |minecraft                     |1.16.5              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		main                                              |Ramwal                        |ramwal                        |NONE                |DONE      |Manifest: NOSIGNATURE
+		forge-1.16.5-36.2.0_mapped_snapshot_20210309-1.16.|Forge                         |forge                         |36.2.0              |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 9d82b8b1-19d5-49af-b336-4e917d862619
+	Player Count: 1 / 8; [ServerPlayerEntity['Dev'/788, l='ServerLevel[New World]', x=178.55, y=63.00, z=-96.66]]
+	Data Packs: vanilla, mod:ramwal, mod:forge
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'
