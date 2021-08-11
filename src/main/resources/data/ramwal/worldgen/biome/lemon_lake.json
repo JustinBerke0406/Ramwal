@@ -1,0 +1,88 @@
+{
+  "surface_builder": "minecraft:ocean_sand",
+  "depth": -0.4,
+  "scale": 0.05,
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "precipitation": "rain",
+  "temperature_modifier": "none",
+  "category": "ocean",
+  "player_spawn_friendly": true,
+  "creature_spawn_probability": 0.1,
+  "effects": {
+    "sky_color": 16580471,
+    "fog_color": 12304128,
+    "water_color": 15123518,
+    "water_fog_color": 8547089,
+    "grass_color": 16318310,
+    "foliage_color": 15524680
+  },
+  "starts": [],
+  "spawners": {
+    "creature": [
+      {
+        "type": "minecraft:sheep",
+        "weight": 8,
+        "minCount": 2,
+        "maxCount": 9
+      }
+    ]
+  },
+  "spawn_costs": {
+    "minecraft:sheep": {
+      "energy_budget": 0.12,
+      "charge": 1
+    }
+  },
+  "carvers": {
+    "air": [
+      "minecraft:underwater_cave",
+      "minecraft:cave"
+    ]
+  },
+  "features": [
+    [
+      "minecraft:lake_water"
+    ],
+    [
+
+    ],
+    [
+
+    ],
+    [
+
+    ],
+    [
+
+    ],
+    [
+
+    ],
+    [
+      "minecraft:ore_lapis",
+      "minecraft:ore_dirt",
+      "minecraft:ore_andesite",
+      "minecraft:ore_granite",
+      "minecraft:ore_diamond",
+      "minecraft:ore_gold",
+      "minecraft:ore_iron",
+      "minecraft:ore_coal",
+      "minecraft:disk_clay",
+      "minecraft:disk_sand"
+    ],
+    [
+
+    ],
+    [
+      "minecraft:seagrass_normal",
+      "minecraft:flower_plain",
+      "minecraft:patch_grass_plain",
+      "minecraft:flower_plain_decorated",
+      "minecraft:plain_vegetation"
+    ],
+    [
+
+    ]
+  ]
+}
