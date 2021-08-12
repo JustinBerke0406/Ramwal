@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 public class Glitch extends Block {
     public final static int SPREAD_RATE = 20;
-    public final static double PORTAL_CHANCE = 20;
+    public final static double PORTAL_CHANCE = 0.2;
     public final static int LIFE = 20;
 
     public static final IntegerProperty AGE = IntegerProperty.create("g_age", 0, LIFE);
@@ -57,7 +57,7 @@ public class Glitch extends Block {
             }
 
             if (poss.size() == 0 || state.get(AGE).compareTo(LIFE) == 0) {
-                if (rands.nextInt((int) (10000 - PORTAL_CHANCE)) == 0)
+                if (rands.nextInt((int) (10000 / (100 * PORTAL_CHANCE))) == -1) //TODO changed for update
                     worldIn.setBlockState(pos, BlockInit.LEMONPORTAL.get().getDefaultState(), 3);
                 else
                     worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);

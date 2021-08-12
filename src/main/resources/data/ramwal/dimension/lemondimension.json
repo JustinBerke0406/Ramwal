@@ -1,23 +1,8 @@
 {
-  "type": {
-    "name": "ramwal:lemondimtype",
-    "ultrawarm": false,
-    "natural": true,
-    "piglin_safe": false,
-    "respawn_anchor_works": false,
-    "bed_works": true,
-    "has_raids": false,
-    "has_skylight": true,
-    "has_ceiling": false,
-    "coordinate_scale": 13.51,
-    "ambient_light": 0.1,
-    "logical_height": 256,
-    "effects": "minecraft:overworld",
-    "infiniburn": "minecraft:infiniburn_overworld"
-  },
+  "type": "ramwal:lemondimtype",
   "generator": {
     "type": "minecraft:noise",
-    "seed": -1789151624,
+    "seed": 0,
     "settings": {
       "name": "ramwal:lemondimension",
       "bedrock_roof_position": -10,
@@ -77,7 +62,7 @@
     },
     "biome_source": {
       "type": "minecraft:multi_noise",
-      "seed": 1516683359872193970,
+      "seed": 0,
       "altitude_noise": {
         "firstOctave": -7,
         "amplitudes": [
@@ -121,7 +106,7 @@
           "parameters": {
             "altitude": 0.1,
             "weirdness": 0.0,
-            "offset": 0.145,
+            "offset": 0.146,
             "temperature": 0.5,
             "humidity": 0.7
           },

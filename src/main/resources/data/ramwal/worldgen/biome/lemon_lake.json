@@ -1,7 +1,7 @@
 {
   "surface_builder": "minecraft:ocean_sand",
   "depth": -0.4,
-  "scale": 0.05,
+  "scale": 0.01,
   "temperature": 0.8,
   "downfall": 0.4,
   "precipitation": "rain",
@@ -22,18 +22,13 @@
     "creature": [
       {
         "type": "minecraft:sheep",
-        "weight": 8,
+        "weight": 1,
         "minCount": 2,
-        "maxCount": 9
+        "maxCount": 4
       }
     ]
   },
-  "spawn_costs": {
-    "minecraft:sheep": {
-      "energy_budget": 0.12,
-      "charge": 1
-    }
-  },
+  "spawn_costs": {},
   "carvers": {
     "air": [
       "minecraft:underwater_cave",
