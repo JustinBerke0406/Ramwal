@@ -39,11 +39,6 @@ public class Glitch extends Block {
     }
 
     @Override
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-
-    }
-
-    @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         if (!worldIn.isRemote) {
             ArrayList<BlockPos> poss = new ArrayList<>();
