@@ -57,7 +57,7 @@ public class Glitch extends Block {
             }
 
             if (poss.size() == 0 || state.get(AGE).compareTo(LIFE) == 0) {
-                if (rands.nextInt((int) (10000 / (100 * PORTAL_CHANCE))) == -1) //TODO changed for update
+                if (rands.nextInt((int) (10000 / (100 * PORTAL_CHANCE))) == 0)
                     worldIn.setBlockState(pos, BlockInit.LEMONPORTAL.get().getDefaultState(), 3);
                 else
                     worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);

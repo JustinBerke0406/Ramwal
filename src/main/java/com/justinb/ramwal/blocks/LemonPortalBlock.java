@@ -1,5 +1,6 @@
 package com.justinb.ramwal.blocks;
 
+import com.justinb.ramwal.inherited.ModTeleporter;
 import com.justinb.ramwal.init.BlockInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -34,7 +35,7 @@ public class LemonPortalBlock extends Block {
                 return;
             }
 
-            entityIn.changeDimension(serverworld);
+            entityIn.changeDimension(serverworld, new ModTeleporter());
         }
     }
 
