@@ -1,7 +1,7 @@
 {
   "surface_builder": "minecraft:ocean_sand",
-  "depth": -0.7,
-  "scale": 0.40,
+  "depth": -0.6,
+  "scale": 0.00,
   "temperature": 0.8,
   "downfall": 0.4,
   "precipitation": "rain",
@@ -12,8 +12,8 @@
   "effects": {
     "sky_color": 16580471,
     "fog_color": 12304128,
-    "water_color": 14925352,
-    "water_fog_color": 14925352,
+    "water_color": 15123518,
+    "water_fog_color": 8547089,
     "grass_color": 16318310,
     "foliage_color": 15524680
   },

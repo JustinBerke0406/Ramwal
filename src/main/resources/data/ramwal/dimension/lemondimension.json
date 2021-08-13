@@ -130,7 +130,7 @@
             "temperature": 0.05,
             "humidity": 0.4
           },
-          "biome": "ramwal:lemon_ocean"
+          "biome": "ramwal:deep_lemon_ocean"
         },
         {
           "parameters": {
@@ -160,7 +160,7 @@
             "temperature": -0.1,
             "humidity": 0.4
           },
-          "biome": "ramwal:lemon_lake"
+          "biome": "ramwal:lemon_ocean"
         },
         {
           "parameters": {
