@@ -1,7 +1,7 @@
 {
   "surface_builder": "minecraft:grass",
-  "depth": 0.06,
-  "scale": 0.0,
+  "depth": 0.12,
+  "scale": 0.15,
   "temperature": 0.6,
   "downfall": 0.4,
   "precipitation": "rain",
@@ -39,7 +39,7 @@
 
     ],
     [
-      "minecraft:lake_water"
+
     ],
     [
 
@@ -69,11 +69,9 @@
 
     ],
     [
-      "minecraft:patch_sunflower",
       "minecraft:flower_plain",
       "minecraft:patch_grass_plain",
       "minecraft:spring_water",
-      "minecraft:flower_plain_decorated",
       "minecraft:plain_vegetation"
     ],
     [

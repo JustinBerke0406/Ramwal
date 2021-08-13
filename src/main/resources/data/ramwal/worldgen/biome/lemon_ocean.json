@@ -1,19 +1,19 @@
 {
-  "surface_builder": "minecraft:grass",
-  "depth": 0.06,
-  "scale": 0.0,
-  "temperature": 0.6,
+  "surface_builder": "minecraft:ocean_sand",
+  "depth": -0.7,
+  "scale": 0.40,
+  "temperature": 0.8,
   "downfall": 0.4,
   "precipitation": "rain",
   "temperature_modifier": "none",
-  "category": "plains",
+  "category": "ocean",
   "player_spawn_friendly": true,
   "creature_spawn_probability": 0.1,
   "effects": {
     "sky_color": 16580471,
     "fog_color": 12304128,
-    "water_color": 15526248,
-    "water_fog_color": 8547089,
+    "water_color": 14925352,
+    "water_fog_color": 14925352,
     "grass_color": 16318310,
     "foliage_color": 15524680
   },
@@ -31,15 +31,16 @@
   "spawn_costs": {},
   "carvers": {
     "air": [
+      "minecraft:underwater_cave",
       "minecraft:cave"
     ]
   },
   "features": [
     [
-
+      "minecraft:lake_water"
     ],
     [
-      "minecraft:lake_water"
+
     ],
     [
 
@@ -69,10 +70,9 @@
 
     ],
     [
-      "minecraft:patch_sunflower",
+      "minecraft:seagrass_normal",
       "minecraft:flower_plain",
       "minecraft:patch_grass_plain",
-      "minecraft:spring_water",
       "minecraft:flower_plain_decorated",
       "minecraft:plain_vegetation"
     ],

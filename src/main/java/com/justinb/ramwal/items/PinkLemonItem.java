@@ -23,7 +23,7 @@ import java.util.Random;
 public class PinkLemonItem extends Item {
     public static final int AMOUNT = 80;
     public static final int CHANCE_BAD = 20;
-    public static final int CHANCE_GOOD = 15;
+    public static final int CHANCE_GOOD = 10;
 
     public PinkLemonItem(Properties properties) {
         super(properties);
