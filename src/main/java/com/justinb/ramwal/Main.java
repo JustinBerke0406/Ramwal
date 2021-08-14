@@ -28,6 +28,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.util.stream.Collectors;
 
@@ -41,6 +42,8 @@ public class Main
 
     public Main() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        GeckoLib.initialize();
 
         // Register the setup method for modloading
         bus.addListener(this::setup);
