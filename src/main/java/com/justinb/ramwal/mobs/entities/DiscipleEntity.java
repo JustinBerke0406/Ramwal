@@ -76,10 +76,10 @@ public class DiscipleEntity extends MonsterEntity implements IAnimatable {
         return MobEntity.func_233666_p_()
                 .createMutableAttribute(Attributes.MAX_HEALTH, 50.0D)
                 .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3F)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 9d)
-                .createMutableAttribute(Attributes.ATTACK_SPEED, 0.4f)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 8d)
+                .createMutableAttribute(Attributes.ATTACK_SPEED, 0.3f)
                 .createMutableAttribute(Attributes.ATTACK_KNOCKBACK, 0.4f)
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 200.0D);
+                .createMutableAttribute(Attributes.FOLLOW_RANGE, 35.0D);
     }
 
     protected void registerGoals() {
