@@ -1,6 +1,7 @@
 package com.justinb.ramwal;
 
 import com.justinb.ramwal.inherited.ModSpawnEggItem;
+import com.justinb.ramwal.handlers.ColorHandler;
 import com.justinb.ramwal.init.*;
 import com.justinb.ramwal.mobs.entities.DiscipleEntity;
 import com.justinb.ramwal.mobs.renderers.DiscipleRenderer;
@@ -60,6 +61,8 @@ public class Main
         // Register the doClientStuff method for modloading
         bus.addListener(this::doClientStuff);
 
+        bus.addListener(ColorHandler::registerItemColor);
+
         // Register ourselves for the server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(SugarRushRender.class);
@@ -75,10 +78,6 @@ public class Main
         EntityInit.ENTITIES.register(bus);
 
         NetworkHandler.init();
-    }
-
-    private void register() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
     }
 
     private void setup(final FMLCommonSetupEvent event)
