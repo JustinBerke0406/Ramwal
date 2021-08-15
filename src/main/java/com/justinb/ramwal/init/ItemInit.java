@@ -1,6 +1,7 @@
 package com.justinb.ramwal.init;
 
 import com.justinb.ramwal.Main;
+import com.justinb.ramwal.inherited.ModSpawnEggItem;
 import com.justinb.ramwal.items.*;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
@@ -75,6 +76,10 @@ public class ItemInit {
                     .maxStackSize(1)
                     .group(ItemGroup.MISC)
                     .rarity(Rarity.RARE)));
+
+    //Spawn Eggs
+    public static final RegistryObject<SpawnEggItem> DISCIPLE_EGG = ITEMS.register("disciple_egg",
+            () -> new ModSpawnEggItem(() -> EntityInit.DISCIPLE.get(), 0x363636, 0x1f1f1f, new Item.Properties().group(ModItemGroup.instance)));
 
     //Block items ---------------------------------------------------------------------------
 

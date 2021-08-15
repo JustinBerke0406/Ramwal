@@ -21,6 +21,9 @@
   "item.minecraft.lingering_potion.effect.sugarrush": "Sugar Rush Lingering Potion",
   "item.minecraft.tipped_arrow.effect.sugarrush": "Sugar Rush Arrow",
 
+  "item.ramwal.disciple_egg": "Disciple Spawn Egg",
+  "entity.ramwal.disciple": "Disciple",
+
   "item.ramwal.music_disc_owner": "Music Disc",
   "item.ramwal.music_disc_owner.desc": "Ramwal - The Owner"
 }

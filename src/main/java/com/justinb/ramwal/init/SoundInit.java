@@ -12,4 +12,7 @@ public class SoundInit {
 
     public static final RegistryObject<SoundEvent> RAMWAL = SOUNDS.register("music_disc.owner",
             () -> new SoundEvent(new ResourceLocation("ramwal:music_disc_owner")));
+
+    public static final RegistryObject<SoundEvent> DISCIPLE_HURT = SOUNDS.register("disciple_hurt",
+            () -> new SoundEvent(new ResourceLocation("ramwal:disciple_hurt")));
 }

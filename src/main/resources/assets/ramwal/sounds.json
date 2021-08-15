@@ -7,5 +7,14 @@
         "stream": true
       }
     ]
+  },
+  "disciple_hurt": {
+    "sounds": [
+      {
+        "category": "neutral",
+        "name": "ramwal:disciple_hurt",
+        "steam": true
+      }
+    ]
   }
 }
