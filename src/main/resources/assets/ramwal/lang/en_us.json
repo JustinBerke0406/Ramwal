@@ -8,9 +8,13 @@
   "item.ramwal.lime": "Lime",
   "item.ramwal.limeade": "Limeade",
 
+  "item.ramwal.basic_chip": "Basic Chip",
+
   "block.ramwal.glitch": "Corrupted Block",
   "block.ramwal.lemonspawneri": "Lemon Spawner (Tier I)",
   "block.ramwal.lemonspawnerii": "Lemon Spawner (Tier II)",
+
+  "block.ramwal.programmer": "Programmer",
 
   "block.ramwal.lemonportal": "Lemon Portal",
 
@@ -24,6 +28,11 @@
   "item.ramwal.disciple_egg": "Disciple Spawn Egg",
   "entity.ramwal.disciple": "Disciple",
 
+  "item.ramwal.mimic_egg": "Mimic Spawn Egg",
+  "entity.ramwal.mimic": "Mimic",
+
   "item.ramwal.music_disc_owner": "Music Disc",
-  "item.ramwal.music_disc_owner.desc": "Ramwal - The Owner"
+  "item.ramwal.music_disc_owner.desc": "Ramwal - The Owner",
+
+  "container.ramwal.programmer": "Programmer"
 }

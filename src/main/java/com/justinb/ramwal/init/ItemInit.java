@@ -61,6 +61,9 @@ public class ItemInit {
                     .effect(() -> new EffectInstance(EffectInit.SUGARRUSH.get(), 200, 2), 0.3f)
                     .build())));
 
+    public static final RegistryObject<Item> BASIC_CHIP = ITEMS.register("basic_chip",
+            () -> new ChipItem(new Item.Properties().maxStackSize(1).group(ModItemGroup.instance)));
+
     //Disc
     public static final RegistryObject<MusicDiscItem> RAMWAL = ITEMS.register("music_disc_owner",
             () -> new MusicDiscItem(14, SoundInit.RAMWAL, (new Item.Properties())
@@ -72,6 +75,9 @@ public class ItemInit {
     public static final RegistryObject<SpawnEggItem> DISCIPLE_EGG = ITEMS.register("disciple_egg",
             () -> new ModSpawnEggItem(() -> EntityInit.DISCIPLE.get(), 0x363636, 0x1f1f1f, new Item.Properties().group(ModItemGroup.instance)));
 
+    public static final RegistryObject<SpawnEggItem> MIMIC_EGG = ITEMS.register("mimic_egg",
+            () -> new ModSpawnEggItem(() -> EntityInit.MIMIC.get(), 0x0af047, 0x9c6d00, new Item.Properties().group(ModItemGroup.instance)));
+
     //Block items ---------------------------------------------------------------------------
 
     public static final RegistryObject<BlockItem> GLITCH = ITEMS.register("glitch",
@@ -82,6 +88,9 @@ public class ItemInit {
 
     public static final RegistryObject<BlockItem> LEMONSPAWNERII = ITEMS.register("lemonspawnerii",
             () -> new BlockItem(BlockInit.LEMONSPAWNERII.get(), new Item.Properties().group(ModItemGroup.instance)));
+
+    public static final RegistryObject<BlockItem> PROGRAMMER = ITEMS.register("programmer",
+            () -> new BlockItem(BlockInit.PROGRAMMER.get(), new Item.Properties().group(ModItemGroup.instance)));
 
     public static class ModItemGroup extends ItemGroup {
         public static final ModItemGroup instance = new ModItemGroup(ItemGroup.GROUPS.length, "ramwal");

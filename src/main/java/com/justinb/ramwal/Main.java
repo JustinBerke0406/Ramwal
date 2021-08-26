@@ -1,14 +1,20 @@
 package com.justinb.ramwal;
 
+import com.justinb.ramwal.events.RegistrationEvents;
 import com.justinb.ramwal.inherited.ModSpawnEggItem;
 import com.justinb.ramwal.handlers.ColorHandler;
 import com.justinb.ramwal.init.*;
 import com.justinb.ramwal.mobs.entities.DiscipleEntity;
+import com.justinb.ramwal.mobs.models.MimicModel;
 import com.justinb.ramwal.mobs.renderers.DiscipleRenderer;
+import com.justinb.ramwal.mobs.renderers.MimicRenderer;
 import com.justinb.ramwal.network.NetworkHandler;
 import com.justinb.ramwal.rendering.SugarRushRender;
+import com.justinb.ramwal.screencontainer.ProgrammerScreenContainer;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -35,7 +41,6 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.bernie.geckolib3.GeckoLib;
 
 import java.util.stream.Collectors;
 
@@ -49,8 +54,6 @@ public class Main
 
     public Main() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        GeckoLib.initialize();
 
         // Register the setup method for modloading
         bus.addListener(this::setup);
@@ -67,6 +70,7 @@ public class Main
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(SugarRushRender.class);
         MinecraftForge.EVENT_BUS.register(ModSpawnEggItem.class);
+        MinecraftForge.EVENT_BUS.register(RegistrationEvents.class);
 
         //Register mod stuff
         SoundInit.SOUNDS.register(bus);
@@ -76,6 +80,8 @@ public class Main
         PotionInit.POTIONS.register(bus);
         LootModifierInit.SERIALIZERS.register(bus);
         EntityInit.ENTITIES.register(bus);
+        ContainerInit.CONTAINERS.register(bus);
+        TileEntityInit.TILE_ENTITIES.register(bus);
 
         NetworkHandler.init();
     }
@@ -87,16 +93,16 @@ public class Main
                 Ingredient.fromItems(ItemInit.PINK_LEMON.get()),
                 PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), PotionInit.SUGARRUSH.get()));
 
-        DeferredWorkQueue.runLater(() ->
-            GlobalEntityTypeAttributes.put(EntityInit.DISCIPLE.get(), DiscipleEntity.setCustomAttributes().create()));
-
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
+        ScreenManager.registerFactory(ContainerInit.PROGRAMMER.get(), ProgrammerScreenContainer::new);
+
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.DISCIPLE.get(), DiscipleRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityInit.MIMIC.get(), MimicRenderer::new);
 
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);

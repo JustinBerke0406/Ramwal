@@ -1,10 +1,7 @@
 package com.justinb.ramwal.init;
 
 import com.justinb.ramwal.Main;
-import com.justinb.ramwal.blocks.Glitch;
-import com.justinb.ramwal.blocks.LemonPortalBlock;
-import com.justinb.ramwal.blocks.LemonSpawnerIBlock;
-import com.justinb.ramwal.blocks.LemonSpawnerIIBlock;
+import com.justinb.ramwal.blocks.*;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -47,4 +44,11 @@ public class BlockInit {
                     .sound(SoundType.GLASS)
                     .doesNotBlockMovement()
                     .setLightLevel((state) -> 2)));
+
+    public static final RegistryObject<Block> PROGRAMMER = BLOCKS.register("programmer",
+            () -> new ProgrammerBlock(AbstractBlock.Properties.create(Material.IRON)
+                .hardnessAndResistance(2.5f, 6.0f)
+                .sound(SoundType.METAL)
+                .harvestTool(ToolType.PICKAXE)
+                .harvestLevel(1)));
 }
