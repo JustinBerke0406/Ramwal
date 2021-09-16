@@ -146,21 +146,6 @@ public class LemonPouchContainer extends Container {
             openedFrom.setTag(nbt);
         }
 
-        LemonPouchItem item = (LemonPouchItem) openedFrom.getItem();
-
-        ArrayList<ITextComponent> text = new ArrayList<>();
-
-        for (int i = 0; i < 5; i++) {
-            Slot slot = inventorySlots.get(i);
-
-            if (slot.getHasStack()) {
-                text.add(new StringTextComponent(slot.getStack().getDisplayName().getString()).mergeStyle(TextFormatting.BLUE));
-            }
-        }
-
-
-        item.addInformation(openedFrom, Minecraft.getInstance().world, text, ITooltipFlag.TooltipFlags.NORMAL);
-
         super.detectAndSendChanges();
     }
 }
