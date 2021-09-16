@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 
 import java.util.logging.Logger;
 
+import static com.justinb.ramwal.util.Animation.*;
 import static net.minecraft.entity.Entity.horizontalMag;
 
 public class DiscipleModel<T extends DiscipleEntity> extends SegmentedModel<T> {
@@ -35,11 +36,9 @@ public class DiscipleModel<T extends DiscipleEntity> extends SegmentedModel<T> {
         this.all.setRotationPoint(0.0F, 24.0F, 0.0F);
         setRotationAngle(all, -3.1416F, 0.0F, 3.1416F);
 
-
         this.spine = new ModelRenderer(this);
         this.spine.setRotationPoint(0.0F, -30.0F, 0.0F);
         this.all.addChild(spine);
-
 
         this.body = new ModelRenderer(this);
         this.body.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -299,29 +298,5 @@ public class DiscipleModel<T extends DiscipleEntity> extends SegmentedModel<T> {
         setRotationAngle(head, 0, 0, 0);
     }
 
-    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
-    }
 
-    private float interp(float key, float frame, float angle) {
-        return (float) (-Math.cos((key/(frame)) * Math.PI) + 1)/2 * angle;
-    }
-
-    private float interp(float key, float frame, float from, float to) {
-        return interp(key, frame, to - from) + from;
-    }
-
-    private float l_interp(float key, float frame, float angle) {
-        return (key/(frame) * angle);
-    }
-
-    private float l_interp(float key, float frame, float from, float to) {
-        return l_interp(key, frame, to - from) + from;
-    }
-
-    private float degToRad(float deg) {
-        return (float) (deg * Math.PI/180);
-    }
 }

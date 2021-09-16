@@ -69,6 +69,16 @@ public class DiscipleEntity extends MonsterEntity {
         if (getAttackTimer() > 0) setAttackTimer(getAttackTimer() - 1);
     }
 
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        return SoundInit.DISCIPLE_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundInit.DISCIPLE_HURT.get();
+    }
+
     protected void registerData() {
         super.registerData();
         this.dataManager.register(attackTimer, 0);

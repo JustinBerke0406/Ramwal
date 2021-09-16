@@ -1,6 +1,6 @@
 package com.justinb.ramwal.blocks;
 
-import com.justinb.ramwal.inherited.ModTeleporter;
+import com.justinb.ramwal.inherited.misc.ModTeleporter;
 import com.justinb.ramwal.init.BlockInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

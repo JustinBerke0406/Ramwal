@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LCL",
+    "LGL",
+    "LLL"
+  ],
+  "key": {
+    "C": {
+      "item": "ramwal:glitch"
+    },
+    "L": {
+      "item": "minecraft:iron_ingot"
+    },
+    "G": {
+      "item": "ramwal:lemon"
+    }
+  },
+  "result": {
+    "item": "ramwal:integrator",
+    "count": 1
+  }
+}

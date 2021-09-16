@@ -1,16 +1,20 @@
 package com.justinb.ramwal.builders;
 
 import com.justinb.ramwal.blocks.Glitch;
+import com.justinb.ramwal.init.EntityInit;
 import com.justinb.ramwal.init.ItemInit;
 import com.justinb.ramwal.items.AbstractLemonItem;
+import com.justinb.ramwal.mobs.entities.MimicEntity;
 import com.justinb.ramwal.network.NetworkHandler;
 import com.justinb.ramwal.network.SpreadPacket;
+import com.justinb.ramwal.recipes.Recipes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.CreeperEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -52,6 +56,26 @@ public class LemonBuilder {
         return lemon;
     }
 
+    public static AbstractLemonItem build(int color, float saturation, int hunger, ILemonBehavior behavior) {
+        Food.Builder builder = new Food.Builder();
+
+        builder = builder
+                .saturation(saturation)
+                .hunger(hunger)
+                .setAlwaysEdible();
+
+        AbstractLemonItem lemon = new AbstractLemonItem(new Item.Properties().group(ItemInit.ModItemGroup.instance).food(builder.build()), color) {
+            @Override
+            public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
+                return behavior.run(stack, worldIn, entityLiving);
+            }
+        };
+
+        items.add(lemon);
+
+        return lemon;
+    }
+
     private static ItemStack superItemFinish(Item item, ItemStack stack, World worldIn, LivingEntity entityLiving) {
         return item.isFood() ? entityLiving.onFoodEaten(worldIn, stack) : stack;
     }
@@ -64,6 +88,11 @@ public class LemonBuilder {
         ItemStack run(ItemStack stack, World worldIn, LivingEntity entityLiving);
     }
 
+
+    //BEHAVIORS
+
+    public static final ILemonBehavior BASE_BEHAVIOR = (ItemStack stack, World worldIn, LivingEntity entityLiving) -> superItemFinish(stack.getItem(), stack, worldIn, entityLiving);
+
     public static final ILemonBehavior LEMON_BEHAVIOR = (ItemStack stack, World worldIn, LivingEntity entityLiving) -> {
         BlockPos pos = entityLiving.getPosition();
 
@@ -74,6 +103,17 @@ public class LemonBuilder {
         return superItemFinish(stack.getItem(), stack, worldIn, entityLiving);};
 
     public static final ILemonBehavior PINK_LEMON_BEHAVIOR = (stack, worldIn, entityLiving) -> {
+        if (!worldIn.isRemote()) {
+            MimicEntity mimic = new MimicEntity(EntityInit.MIMIC.get(), worldIn);
+            mimic.setPositionAndRotation(entityLiving.getPosX(), entityLiving.getPosY(), entityLiving.getPosZ(), entityLiving.rotationYaw, entityLiving.rotationPitch);
+
+            worldIn.addEntity(mimic);
+        }
+
+        return superItemFinish(stack.getItem(), stack, worldIn, entityLiving);
+    };
+
+    public static final ILemonBehavior LIME_BEHAVIOR = (stack, worldIn, entityLiving) -> {
         if (!worldIn.isRemote) {
             Random rand = new Random();
 
@@ -113,12 +153,6 @@ public class LemonBuilder {
                     worldIn.setBlockState(entityLiving.getPosition().down(), state);
             }
         }
-
-        return superItemFinish(stack.getItem(), stack, worldIn, entityLiving);
-    };
-
-    public static final ILemonBehavior LIME_BEHAVIOR = (stack, worldIn, entityLiving) -> {
-        //TODO
 
         return superItemFinish(stack.getItem(), stack, worldIn, entityLiving);
     };

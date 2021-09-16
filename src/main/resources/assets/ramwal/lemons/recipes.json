@@ -1,0 +1,91 @@
+{
+  "ramwal:defaultlemon": [
+    {
+      "cost": 1,
+      "items": [
+        "ramwal:lemon"
+      ]
+    }
+  ],
+  "ramwal:condensedlemon": [
+    {
+      "cost": 2,
+      "items": [
+        "ramwal:lemon",
+        "ramwal:lemon",
+        "ramwal:lemon"
+      ]
+    }
+  ],
+  "ramwal:antilemon": [
+    {
+      "cost": 3,
+      "items": [
+        "ramwal:lemon",
+        "ramwal:condensedlemon",
+        "ramwal:defaultlemon"
+      ]
+    },
+    {
+      "cost": 8,
+      "items": [
+        "ramwal:pinklemon",
+        "ramwal:acidlemon"
+      ]
+    }
+  ],
+  "ramwal:orangelemon": [
+    {
+      "cost": 4,
+      "items": [
+        "ramwal:lemon",
+        "ramwal:pinklemon"
+      ]
+    }
+  ],
+  "ramwal:acidlemon": [
+    {
+      "cost": 6,
+      "items": [
+        "ramwal:condensedlemon",
+        "ramwal:condensedlemon",
+        "ramwal:condensedlemon"
+      ]
+    }
+  ],
+  "ramwal:basiclemon": [
+    {
+      "cost": 2,
+      "items": [
+        "ramwal:acidlemon",
+        "ramwal:antilemon"
+      ]
+    }
+  ],
+  "ramwal:neutrallemon": [
+    {
+      "cost": 12,
+      "items": [
+        "ramwal:acidlemon",
+        "ramwal:basiclemon"
+      ]
+    },
+    {
+      "cost": 18,
+      "items": [
+        "ramwal:lightlemon",
+        "ramwal:darklemon",
+        "ramwal:compressorlemon"
+      ]
+    }
+  ],
+  "ramwal:unstablelemon": [
+    {
+      "cost": 10,
+      "items": [
+        "ramwal:lightlemon",
+        "ramwal:darklemon"
+      ]
+    }
+  ]
+}

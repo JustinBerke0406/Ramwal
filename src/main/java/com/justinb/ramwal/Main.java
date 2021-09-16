@@ -1,35 +1,33 @@
 package com.justinb.ramwal;
 
+import com.justinb.ramwal.containers.LemonPouchContainer;
+import com.justinb.ramwal.events.ItemEvents;
 import com.justinb.ramwal.events.RegistrationEvents;
-import com.justinb.ramwal.inherited.ModSpawnEggItem;
+import com.justinb.ramwal.inherited.misc.ModSpawnEggItem;
 import com.justinb.ramwal.handlers.ColorHandler;
 import com.justinb.ramwal.init.*;
-import com.justinb.ramwal.mobs.entities.DiscipleEntity;
-import com.justinb.ramwal.mobs.models.MimicModel;
 import com.justinb.ramwal.mobs.renderers.DiscipleRenderer;
 import com.justinb.ramwal.mobs.renderers.MimicRenderer;
 import com.justinb.ramwal.network.NetworkHandler;
+import com.justinb.ramwal.recipes.Recipes;
 import com.justinb.ramwal.rendering.SugarRushRender;
-import com.justinb.ramwal.screencontainer.ProgrammerScreenContainer;
+import com.justinb.ramwal.screencontainer.IntegratorScreenContainer;
+import com.justinb.ramwal.screencontainer.LemonPouchScreenContainer;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.loot.conditions.LootConditionManager;
-import net.minecraft.loot.functions.LootFunctionManager;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.potion.Potions;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -71,11 +69,13 @@ public class Main
         MinecraftForge.EVENT_BUS.register(SugarRushRender.class);
         MinecraftForge.EVENT_BUS.register(ModSpawnEggItem.class);
         MinecraftForge.EVENT_BUS.register(RegistrationEvents.class);
+        MinecraftForge.EVENT_BUS.register(ItemEvents.class);
 
         //Register mod stuff
         SoundInit.SOUNDS.register(bus);
         BlockInit.BLOCKS.register(bus);
         ItemInit.ITEMS.register(bus);
+        LemonInit.ITEMS.register(bus);
         EffectInit.EFFECTS.register(bus);
         PotionInit.POTIONS.register(bus);
         LootModifierInit.SERIALIZERS.register(bus);
@@ -90,8 +90,10 @@ public class Main
     {
         BrewingRecipeRegistry.addRecipe(
                 Ingredient.fromStacks(PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), Potions.SWIFTNESS)),
-                Ingredient.fromItems(ItemInit.PINK_LEMON.get()),
+                Ingredient.fromItems(LemonInit.PINK_LEMON.get()),
                 PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), PotionInit.SUGARRUSH.get()));
+
+        Recipes.registerAll();
 
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
@@ -99,7 +101,8 @@ public class Main
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        ScreenManager.registerFactory(ContainerInit.PROGRAMMER.get(), ProgrammerScreenContainer::new);
+        ScreenManager.registerFactory(ContainerInit.INTEGRATOR.get(), IntegratorScreenContainer::new);
+        ScreenManager.registerFactory(ContainerInit.LEMONPOUCH.get(), LemonPouchScreenContainer::new);
 
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.DISCIPLE.get(), DiscipleRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.MIMIC.get(), MimicRenderer::new);

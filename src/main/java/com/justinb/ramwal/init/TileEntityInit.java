@@ -1,8 +1,7 @@
 package com.justinb.ramwal.init;
 
 import com.justinb.ramwal.Main;
-import com.justinb.ramwal.tileentities.ProgrammerTileEntity;
-import net.minecraft.inventory.container.ContainerType;
+import com.justinb.ramwal.tileentities.IntegratorTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -11,7 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class TileEntityInit {
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Main.MODID);
 
-    public static RegistryObject<TileEntityType<ProgrammerTileEntity>> PROGRAMMER = TILE_ENTITIES.register("programmer",
-            () -> TileEntityType.Builder.create(ProgrammerTileEntity::new, BlockInit.PROGRAMMER.get()).build(null));
+    public static RegistryObject<TileEntityType<IntegratorTileEntity>> INTEGRATOR = TILE_ENTITIES.register("integrator",
+            () -> TileEntityType.Builder.create(IntegratorTileEntity::new, BlockInit.INTEGRATOR.get()).build(null));
 
 }

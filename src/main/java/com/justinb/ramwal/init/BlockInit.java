@@ -45,8 +45,8 @@ public class BlockInit {
                     .doesNotBlockMovement()
                     .setLightLevel((state) -> 2)));
 
-    public static final RegistryObject<Block> PROGRAMMER = BLOCKS.register("programmer",
-            () -> new ProgrammerBlock(AbstractBlock.Properties.create(Material.IRON)
+    public static final RegistryObject<Block> INTEGRATOR = BLOCKS.register("integrator",
+            () -> new IntegratorBlock(AbstractBlock.Properties.create(Material.IRON)
                 .hardnessAndResistance(2.5f, 6.0f)
                 .sound(SoundType.METAL)
                 .harvestTool(ToolType.PICKAXE)

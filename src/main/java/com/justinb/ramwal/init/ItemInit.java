@@ -1,26 +1,22 @@
 package com.justinb.ramwal.init;
 
 import com.justinb.ramwal.Main;
-import com.justinb.ramwal.inherited.ModSpawnEggItem;
+import com.justinb.ramwal.builders.CraftableLemonBuilder;
+import com.justinb.ramwal.inherited.misc.ModSpawnEggItem;
 import com.justinb.ramwal.builders.LemonBuilder;
 import com.justinb.ramwal.items.*;
-import net.minecraft.entity.LivingEntity;
+import com.justinb.ramwal.recipes.Recipe;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.function.Supplier;
+import java.rmi.registry.Registry;
 
 public class ItemInit {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Main.MODID);
-
-    public static final RegistryObject<Item> LEMON = ITEMS.register("lemon",
-            () -> LemonBuilder.build(0xffff00, 0.4f, 3, LemonBuilder.LEMON_BEHAVIOR, new float[] {1.0f}, () -> new EffectInstance(Effects.NAUSEA, 200, 3)));
 
     public static final RegistryObject<Item> LEMONADE = ITEMS.register("lemonade",
         () -> new LemonadeItem(new Item.Properties().maxStackSize(1).group(ModItemGroup.instance).food(new Food.Builder()
@@ -31,9 +27,6 @@ public class ItemInit {
             .effect(() -> new EffectInstance(Effects.SPEED, 600, 1), 1.0f)
             .effect(() -> new EffectInstance(Effects.NAUSEA, 200, 1), 0.1f)
             .build())));
-
-    public static final RegistryObject<Item> PINK_LEMON = ITEMS.register("pinklemon",
-            () -> LemonBuilder.build(0xff00ff, 0.5f, 3, LemonBuilder.PINK_LEMON_BEHAVIOR, new float[] {1.0f}, () -> new EffectInstance(Effects.WEAKNESS, 200, 1)));
 
     public static final RegistryObject<Item> PINK_LEMONADE = ITEMS.register("pinklemonade",
             () -> new PinkLemonadeItem(new Item.Properties().maxStackSize(1).group(ModItemGroup.instance).food(new Food.Builder()
@@ -46,10 +39,6 @@ public class ItemInit {
                     .effect(() -> new EffectInstance(EffectInit.SUGARRUSH.get(), 200, 1), 0.3f)
                     .build())));
 
-    public static final RegistryObject<Item> LIME = ITEMS.register("lime",
-            () -> LemonBuilder.build(0x00c200, 0.6f, 3, LemonBuilder.LIME_BEHAVIOR, new float[] {1.0f}, () -> new EffectInstance(Effects.MINING_FATIGUE, 200, 1)));
-
-
     public static final RegistryObject<Item> LIMEADE = ITEMS.register("limeade",
             () -> new LimeadeItem(new Item.Properties().maxStackSize(1).group(ModItemGroup.instance).food(new Food.Builder()
                     .hunger(0)
@@ -61,8 +50,15 @@ public class ItemInit {
                     .effect(() -> new EffectInstance(EffectInit.SUGARRUSH.get(), 200, 2), 0.3f)
                     .build())));
 
-    public static final RegistryObject<Item> BASIC_CHIP = ITEMS.register("basic_chip",
-            () -> new ChipItem(new Item.Properties().maxStackSize(1).group(ModItemGroup.instance)));
+    //Tech
+    public static final RegistryObject<Item> BATTERY = ITEMS.register("battery",
+            () -> new BatteryItem(10));
+
+    public static final RegistryObject<Item> CREATIVEBATTERY = ITEMS.register("creativebattery",
+            () -> new CreativeBatteryItem());
+
+    public static final RegistryObject<LemonPouchItem> LEMONPOUCH = ITEMS.register("lemonpouch",
+            () -> new LemonPouchItem(new Item.Properties().maxStackSize(1).group(ModItemGroup.instance)));
 
     //Disc
     public static final RegistryObject<MusicDiscItem> RAMWAL = ITEMS.register("music_disc_owner",
@@ -73,10 +69,10 @@ public class ItemInit {
 
     //Spawn Eggs
     public static final RegistryObject<SpawnEggItem> DISCIPLE_EGG = ITEMS.register("disciple_egg",
-            () -> new ModSpawnEggItem(() -> EntityInit.DISCIPLE.get(), 0x363636, 0x1f1f1f, new Item.Properties().group(ModItemGroup.instance)));
+            () -> new ModSpawnEggItem(EntityInit.DISCIPLE::get, 0x363636, 0x1f1f1f, new Item.Properties().group(ModItemGroup.instance)));
 
     public static final RegistryObject<SpawnEggItem> MIMIC_EGG = ITEMS.register("mimic_egg",
-            () -> new ModSpawnEggItem(() -> EntityInit.MIMIC.get(), 0x0af047, 0x9c6d00, new Item.Properties().group(ModItemGroup.instance)));
+            () -> new ModSpawnEggItem(EntityInit.MIMIC::get, 0x0af047, 0x9c6d00, new Item.Properties().group(ModItemGroup.instance)));
 
     //Block items ---------------------------------------------------------------------------
 
@@ -89,8 +85,8 @@ public class ItemInit {
     public static final RegistryObject<BlockItem> LEMONSPAWNERII = ITEMS.register("lemonspawnerii",
             () -> new BlockItem(BlockInit.LEMONSPAWNERII.get(), new Item.Properties().group(ModItemGroup.instance)));
 
-    public static final RegistryObject<BlockItem> PROGRAMMER = ITEMS.register("programmer",
-            () -> new BlockItem(BlockInit.PROGRAMMER.get(), new Item.Properties().group(ModItemGroup.instance)));
+    public static final RegistryObject<BlockItem> INTEGRATOR = ITEMS.register("integrator",
+            () -> new BlockItem(BlockInit.INTEGRATOR.get(), new Item.Properties().group(ModItemGroup.instance)));
 
     public static class ModItemGroup extends ItemGroup {
         public static final ModItemGroup instance = new ModItemGroup(ItemGroup.GROUPS.length, "ramwal");
@@ -101,7 +97,7 @@ public class ItemInit {
 
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(LEMON.get());
+            return new ItemStack(LemonInit.LEMON.get());
         }
     }
 }

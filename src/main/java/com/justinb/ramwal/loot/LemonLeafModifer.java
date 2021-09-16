@@ -2,6 +2,7 @@ package com.justinb.ramwal.loot;
 
 import com.google.gson.JsonObject;
 import com.justinb.ramwal.init.ItemInit;
+import com.justinb.ramwal.init.LemonInit;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
@@ -24,7 +25,7 @@ public class LemonLeafModifer extends LootModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        generatedLoot.add(new ItemStack(ItemInit.LEMON.get(), new Random().nextInt(3)));
+        generatedLoot.add(new ItemStack(LemonInit.LEMON.get(), new Random().nextInt(3)));
         return generatedLoot;
     }
 

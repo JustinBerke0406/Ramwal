@@ -8,13 +8,28 @@
   "item.ramwal.lime": "Lime",
   "item.ramwal.limeade": "Limeade",
 
-  "item.ramwal.basic_chip": "Basic Chip",
+  "item.ramwal.defaultlemon": "Default Lemon",
+  "item.ramwal.condensedlemon": "Condensed Lemon",
+  "item.ramwal.antilemon": "Anti-Lemon",
+  "item.ramwal.orangelemon": "Orange Lemon",
+  "item.ramwal.acidlemon": "Acid Lemon",
+  "item.ramwal.basiclemon": "Basic Lemon",
+  "item.ramwal.neutrallemon": "Neutral Lemon",
+  "item.ramwal.lightlemon": "Light Lemon",
+  "item.ramwal.darklemon": "Dark Lemon",
+  "item.ramwal.compressorlemon": "Compressor Lemon",
+  "item.ramwal.unstablelemon": "Unstable Lemon",
+
+  "item.ramwal.battery": "Battery",
+  "item.ramwal.creativebattery": "Creative Battery",
+
+  "item.ramwal.lemonpouch": "Lemon Pouch",
 
   "block.ramwal.glitch": "Corrupted Block",
   "block.ramwal.lemonspawneri": "Lemon Spawner (Tier I)",
   "block.ramwal.lemonspawnerii": "Lemon Spawner (Tier II)",
 
-  "block.ramwal.programmer": "Programmer",
+  "block.ramwal.integrator": "Integrator",
 
   "block.ramwal.lemonportal": "Lemon Portal",
 
@@ -34,5 +49,6 @@
   "item.ramwal.music_disc_owner": "Music Disc",
   "item.ramwal.music_disc_owner.desc": "Ramwal - The Owner",
 
-  "container.ramwal.programmer": "Programmer"
+  "container.ramwal.integrator": "Integrator",
+  "container.ramwal.lemonpouch": "Lemon Pouch"
 }
