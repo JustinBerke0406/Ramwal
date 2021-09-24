@@ -1,6 +1,5 @@
 package com.justinb.ramwal.screencontainer;
 
-import com.justinb.ramwal.containers.IntegratorContainer;
 import com.justinb.ramwal.containers.LemonPouchContainer;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -9,31 +8,23 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nonnull;
 
 public class LemonPouchScreenContainer extends ContainerScreen<LemonPouchContainer> {
-    private LemonPouchContainer container;
-
-    final static int FONT_Y_SPACING = 10;
-    final static int PLAYER_INV_LABEL_XPOS = 8;
-    final static int PLAYER_INV_LABEL_YPOS = 125;
 
     private static final ResourceLocation TEXTURE = new ResourceLocation("ramwal", "textures/gui/lemonpouch_bg.png");
 
     public LemonPouchScreenContainer(LemonPouchContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
         super(screenContainer, inv, titleIn);
 
-        container = screenContainer;
-
         xSize = 176;
         ySize = 207;
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int x, int y) {
+    protected void drawGuiContainerBackgroundLayer(@Nonnull MatrixStack matrixStack, float partialTicks, int x, int y) {
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        assert this.minecraft != null;
         this.minecraft.getTextureManager().bindTexture(TEXTURE);
 
         // width and height are the size provided to the window when initialised after creation.
@@ -47,34 +38,27 @@ public class LemonPouchScreenContainer extends ContainerScreen<LemonPouchContain
     }
 
     @Override
-    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
+    public void render(@Nonnull MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(matrixStack);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         this.renderHoveredTooltip(matrixStack, mouseX, mouseY);
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
+    protected void drawGuiContainerForegroundLayer(@Nonnull MatrixStack matrixStack, int mouseX, int mouseY) {
         // draw the label for the player inventory slots
         //this.font.drawString(matrixStack, this.playerInventory.getDisplayName().getString(),                  ///    this.font.drawString
                 //PLAYER_INV_LABEL_XPOS, PLAYER_INV_LABEL_YPOS, Color.darkGray.getRGB());
     }
 
     @Override
-    protected void renderHoveredTooltip(MatrixStack matrixStack, int mouseX, int mouseY) {
+    protected void renderHoveredTooltip(@Nonnull MatrixStack matrixStack, int mouseX, int mouseY) {
+        assert this.minecraft != null;
+        assert this.minecraft.player != null;
+
         if (!this.minecraft.player.inventory.getItemStack().isEmpty()) return;  // no tooltip if the player is dragging something
 
-        List<ITextComponent> hoveringText = new ArrayList<ITextComponent>();
-
         // If hoveringText is not empty draw the hovering text.  Otherwise, use vanilla to render tooltip for the slots
-        if (!hoveringText.isEmpty()){
-            func_243308_b(matrixStack, hoveringText, mouseX, mouseY);  //renderToolTip
-        } else {
-            super.renderHoveredTooltip(matrixStack, mouseX, mouseY);
-        }
-    }
-
-    public static boolean isInRect(int x, int y, int xSize, int ySize, int mouseX, int mouseY){
-        return ((mouseX >= x && mouseX <= x+xSize) && (mouseY >= y && mouseY <= y+ySize));
+        super.renderHoveredTooltip(matrixStack, mouseX, mouseY);
     }
 }

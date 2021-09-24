@@ -1,7 +1,7 @@
 package com.justinb.ramwal.blocks;
 
 import com.justinb.ramwal.tileentities.DeriverTileEntity;
-import com.justinb.ramwal.tileentities.IntegratorTileEntity;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
@@ -15,21 +15,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.property.Properties;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
 
-public class IntegratorBlock extends ContainerBlock {
-    public IntegratorBlock(Properties properties) {
+public class DeriverBlock extends ContainerBlock {
+    public DeriverBlock(Properties properties) {
         super(properties);
     }
 
     @Nullable
     @Override
     public TileEntity createNewTileEntity(IBlockReader worldIn) {
-        return new IntegratorTileEntity();
+        return new DeriverTileEntity();
     }
 
     @Nullable
@@ -62,7 +63,7 @@ public class IntegratorBlock extends ContainerBlock {
     public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.hasTileEntity() && state.getBlock() != newState.getBlock()) {
             // drops everything in the inventory
-            ((IntegratorTileEntity) Objects.requireNonNull(worldIn.getTileEntity(pos))).dropAllContents(worldIn, pos);
+            ((DeriverTileEntity) Objects.requireNonNull(worldIn.getTileEntity(pos))).dropAllContents(worldIn, pos);
         }
 
         super.onReplaced(state, worldIn, pos, newState, isMoving);

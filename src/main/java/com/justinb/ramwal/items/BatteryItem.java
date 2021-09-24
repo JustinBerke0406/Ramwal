@@ -29,7 +29,7 @@ public class BatteryItem extends Item {
     }
 
     public void damageBy(ItemStack stack, int amount) {
-        int toSet = stack.getDamage() + amount;
+        int toSet = stack.getDamage() + (amount*2);
 
         stack.setDamage(Math.max(toSet, 0));
     }

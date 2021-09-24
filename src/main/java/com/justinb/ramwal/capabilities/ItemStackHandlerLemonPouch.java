@@ -3,7 +3,6 @@ package com.justinb.ramwal.capabilities;
 import com.justinb.ramwal.items.AbstractLemonItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tags.ItemTags;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
@@ -23,8 +22,7 @@ public class ItemStackHandlerLemonPouch extends ItemStackHandler {
         }
         if (stack.isEmpty()) return false;
         Item item = stack.getItem();
-        if (item instanceof AbstractLemonItem) return true;
-        return false;
+        return item instanceof AbstractLemonItem;
     }
 
     public int getNumberOfEmptySlots() {

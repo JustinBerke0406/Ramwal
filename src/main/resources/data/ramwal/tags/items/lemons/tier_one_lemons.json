@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "ramwal:lemon",
+    "ramwal:condensedlemon",
+    "ramwal:defaultlemon",
+    "ramwal:orangelemon",
+    "ramwal:antilemon"
+  ]
+}

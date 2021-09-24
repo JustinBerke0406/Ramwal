@@ -88,6 +88,9 @@ public class ItemInit {
     public static final RegistryObject<BlockItem> INTEGRATOR = ITEMS.register("integrator",
             () -> new BlockItem(BlockInit.INTEGRATOR.get(), new Item.Properties().group(ModItemGroup.instance)));
 
+    public static final RegistryObject<BlockItem> DERIVER = ITEMS.register("deriver",
+            () -> new BlockItem(BlockInit.DERIVER.get(), new Item.Properties().group(ModItemGroup.instance)));
+
     public static class ModItemGroup extends ItemGroup {
         public static final ModItemGroup instance = new ModItemGroup(ItemGroup.GROUPS.length, "ramwal");
 

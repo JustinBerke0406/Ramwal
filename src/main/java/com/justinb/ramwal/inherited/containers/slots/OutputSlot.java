@@ -6,6 +6,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 
+import javax.annotation.Nonnull;
+
 public class OutputSlot extends Slot {
     private ZoneContents inputs;
 
@@ -18,12 +20,13 @@ public class OutputSlot extends Slot {
     /**
      * Check if the stack is allowed to be placed in this slot, used for armor slots as well as furnace fuel.
      */
-    public boolean isItemValid(ItemStack stack) {
+    public boolean isItemValid(@Nonnull ItemStack stack) {
         return false;
     }
 
+    @Nonnull
     @Override
-    public ItemStack onTake(PlayerEntity thePlayer, ItemStack stack) {
+    public ItemStack onTake(@Nonnull PlayerEntity thePlayer, ItemStack stack) {
         for (int i = 0; i < inputs.getSizeInventory(); i++)
             inputs.decrStackSize(i, 1);
 

@@ -47,8 +47,17 @@ public class BlockInit {
 
     public static final RegistryObject<Block> INTEGRATOR = BLOCKS.register("integrator",
             () -> new IntegratorBlock(AbstractBlock.Properties.create(Material.IRON)
-                .hardnessAndResistance(2.5f, 6.0f)
+                .hardnessAndResistance(3.5f, 6.0f)
                 .sound(SoundType.METAL)
                 .harvestTool(ToolType.PICKAXE)
-                .harvestLevel(1)));
+                .harvestLevel(1)
+                .setRequiresTool()));
+
+    public static final RegistryObject<Block> DERIVER = BLOCKS.register("deriver",
+            () -> new DeriverBlock(AbstractBlock.Properties.create(Material.IRON)
+                    .hardnessAndResistance(3.5f, 6.0f)
+                    .sound(SoundType.METAL)
+                    .harvestTool(ToolType.PICKAXE)
+                    .harvestLevel(1)
+                    .setRequiresTool()));
 }

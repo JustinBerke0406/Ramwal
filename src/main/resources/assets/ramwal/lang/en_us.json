@@ -30,6 +30,7 @@
   "block.ramwal.lemonspawnerii": "Lemon Spawner (Tier II)",
 
   "block.ramwal.integrator": "Integrator",
+  "block.ramwal.deriver": "Deriver",
 
   "block.ramwal.lemonportal": "Lemon Portal",
 
@@ -50,5 +51,6 @@
   "item.ramwal.music_disc_owner.desc": "Ramwal - The Owner",
 
   "container.ramwal.integrator": "Integrator",
-  "container.ramwal.lemonpouch": "Lemon Pouch"
+  "container.ramwal.lemonpouch": "Lemon Pouch",
+  "container.ramwal.deriver": "Deriver"
 }

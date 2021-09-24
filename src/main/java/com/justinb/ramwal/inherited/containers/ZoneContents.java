@@ -1,12 +1,12 @@
 package com.justinb.ramwal.inherited.containers;
 
-import com.justinb.ramwal.containers.IntegratorContainer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nonnull;
 import java.util.function.Predicate;
 
 public class ZoneContents implements IInventory {
@@ -41,17 +41,20 @@ public class ZoneContents implements IInventory {
         return true;
     }
 
+    @Nonnull
     @Override
     public ItemStack getStackInSlot(int index) {
         return zoneComponentContents.getStackInSlot(index);
     }
 
+    @Nonnull
     @Override
     public ItemStack decrStackSize(int index, int count) {
         if (count < 0) throw new IllegalArgumentException("count should be >= 0:" + count);
         return zoneComponentContents.extractItem(index, count, false);
     }
 
+    @Nonnull
     @Override
     public ItemStack removeStackFromSlot(int index) {
         int maxPossibleItemStackSize = zoneComponentContents.getSlotLimit(index);
@@ -59,7 +62,7 @@ public class ZoneContents implements IInventory {
     }
 
     @Override
-    public void setInventorySlotContents(int index, ItemStack stack) {
+    public void setInventorySlotContents(int index, @Nonnull ItemStack stack) {
         zoneComponentContents.setStackInSlot(index, stack);
     }
 
@@ -71,12 +74,12 @@ public class ZoneContents implements IInventory {
     }
 
     @Override
-    public void openInventory(PlayerEntity player) {
+    public void openInventory(@Nonnull PlayerEntity player) {
         openInventoryNotificationLambda.invoke();
     }
 
     @Override
-    public void closeInventory(PlayerEntity player) {
+    public void closeInventory(@Nonnull PlayerEntity player) {
         closeInventoryNotificationLambda.invoke();
     }
 
@@ -97,7 +100,7 @@ public class ZoneContents implements IInventory {
     }
 
     @Override
-    public boolean isUsableByPlayer(PlayerEntity player) {
+    public boolean isUsableByPlayer(@Nonnull PlayerEntity player) {
         return canPlayerAccessInventoryLambda.test(player);
     }
 
@@ -153,8 +156,7 @@ public class ZoneContents implements IInventory {
      *         (eg if ItemStack has a size of 23, and only 12 will fit, then ItemStack with a size of 11 is returned
      */
     public ItemStack increaseStackSize(int index, ItemStack itemStackToInsert) {
-        ItemStack leftoverItemStack = zoneComponentContents.insertItem(index, itemStackToInsert, false);
-        return leftoverItemStack;
+        return zoneComponentContents.insertItem(index, itemStackToInsert, false);
     }
 
     /**

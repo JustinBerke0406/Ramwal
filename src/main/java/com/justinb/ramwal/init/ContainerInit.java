@@ -1,6 +1,7 @@
 package com.justinb.ramwal.init;
 
 import com.justinb.ramwal.Main;
+import com.justinb.ramwal.containers.DeriverContainer;
 import com.justinb.ramwal.containers.IntegratorContainer;
 import com.justinb.ramwal.containers.LemonPouchContainer;
 import net.minecraft.inventory.container.ContainerType;
@@ -17,4 +18,7 @@ public class ContainerInit {
 
     public static RegistryObject<ContainerType<IntegratorContainer>> INTEGRATOR = CONTAINERS.register("integrator",
             () -> IForgeContainerType.create(IntegratorContainer::createContainerClientSide));
+
+    public static RegistryObject<ContainerType<DeriverContainer>> DERIVER = CONTAINERS.register("deriver",
+            () -> IForgeContainerType.create(DeriverContainer::createContainerClientSide));
 }

@@ -1,31 +1,18 @@
 package com.justinb.ramwal.containers;
 
 import com.justinb.ramwal.capabilities.ItemStackHandlerLemonPouch;
-import com.justinb.ramwal.inherited.containers.ZoneContents;
 import com.justinb.ramwal.init.ContainerInit;
-import com.justinb.ramwal.init.ItemInit;
 import com.justinb.ramwal.items.AbstractLemonItem;
-import com.justinb.ramwal.items.LemonPouchItem;
-import com.sun.org.apache.xpath.internal.operations.String;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.ClickType;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
 
 public class LemonPouchContainer extends Container {
     public static LemonPouchContainer createContainerServerSide(int windowID, PlayerInventory playerInv, ItemStackHandlerLemonPouch invv, ItemStack stack) {
@@ -128,8 +115,9 @@ public class LemonPouchContainer extends Container {
         return itemstack;
     }
 
+    @Nonnull
     @Override
-    public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, PlayerEntity player) {
+    public ItemStack slotClick(int slotId, int dragType, @Nonnull ClickType clickTypeIn, @Nonnull PlayerEntity player) {
         if (slotId >= 0 && getSlot(slotId) != null && getSlot(slotId).getStack() == player.getHeldItemMainhand()) {
             return ItemStack.EMPTY;
         }

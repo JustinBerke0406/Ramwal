@@ -35,6 +35,7 @@ public class CapabilityLemonPouch implements ICapabilitySerializable<INBT> {
         CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(getCachedInventory(), NO_SPECIFIC_SIDE, nbt);
     }
 
+    @Nonnull
     private ItemStackHandlerLemonPouch getCachedInventory() {
         if (itemStackHandlerLemonPouch == null) {
             itemStackHandlerLemonPouch = new ItemStackHandlerLemonPouch();

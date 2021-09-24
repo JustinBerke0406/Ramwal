@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "ramwal:pinklemon",
+    "ramwal:acidlemon",
+    "ramwal:basiclemon",
+    "ramwal:neutrallemon"
+  ]
+}

@@ -12,27 +12,15 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Recipes {
     public static final ResourceLocation location = new ResourceLocation("ramwal", "lemons/recipes.json");
 
+    public static HashMap<Item, ArrayList<Recipe>> map;
+
     public static void registerAll() {
-        /*Recipe.registerRecipe(1, DEFAULTLEMON.get(),
-                LEMON.get(), Items.AIR, Items.AIR);
-
-        Recipe.registerRecipe(3, DEFAULTLEMON.get(), LIME.get());
-
-        Recipe.registerRecipe(1, CONDENSEDLEMON.get(),
-                LEMON.get(), LEMON.get(), LEMON.get());
-
-        Recipe.registerRecipe(2, ANTILEMON.get(),
-                LEMON.get(), CONDENSEDLEMON.get(), DEFAULTLEMON.get());*/
-
-        generateRecipes();
-    }
-
-    private static void generateRecipes() {
         JsonElement je = null;
 
         try {
@@ -64,5 +52,7 @@ public class Recipes {
                 Recipe.registerRecipe(cost, res, al.toArray(new Item[0]));
             }
         }
+
+        map = Recipe.recipeMap();
     }
 }

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LAL",
+    "AIA",
+    "LAL"
+  ],
+  "key": {
+    "A": {
+      "item": "ramwal:antilemon"
+    },
+    "L": {
+      "item": "minecraft:iron_ingot"
+    },
+    "I": {
+      "item": "ramwal:integrator"
+    }
+  },
+  "result": {
+    "item": "ramwal:deriver",
+    "count": 1
+  }
+}

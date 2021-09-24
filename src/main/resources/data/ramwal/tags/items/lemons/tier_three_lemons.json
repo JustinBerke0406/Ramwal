@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "ramwal:lightlemon",
+    "ramwal:darklemon",
+    "ramwal:compressorlemon",
+    "ramwal:unstablelemon"
+  ]
+}
