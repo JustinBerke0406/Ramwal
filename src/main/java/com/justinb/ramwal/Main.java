@@ -1,5 +1,6 @@
 package com.justinb.ramwal;
 
+import com.google.common.collect.ImmutableMap;
 import com.justinb.ramwal.events.ItemEvents;
 import com.justinb.ramwal.events.RegistrationEvents;
 import com.justinb.ramwal.handlers.ColorHandler;
@@ -30,12 +31,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.FlatChunkGenerator;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.structure.IStructurePieceType;
 import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.gen.placement.IPlacementConfig;
-import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import net.minecraft.world.server.ServerWorld;
@@ -274,9 +271,12 @@ public class Main
              * already added your default structure spacing to some dimensions. You would need to override the spacing with .put(...)
              * And if you want to do dimension blacklisting, you need to remove the spacing entry entirely from the map below to prevent generation safely.
              */
-            Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_);
-            tempMap.putIfAbsent(ModStructures.LEMONTREASURE, DimensionStructuresSettings.field_236191_b_.get(ModStructures.LEMONTREASURE));
-            serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_ = tempMap;
+            ImmutableMap<Structure<?>, StructureSeparationSettings> dm = ObfuscationReflectionHelper.getPrivateValue(DimensionStructuresSettings.class, null, "field_236191_b_");
+            DimensionStructuresSettings dss = serverWorld.getChunkProvider().generator.func_235957_b_();
+
+            Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(ObfuscationReflectionHelper.getPrivateValue(DimensionStructuresSettings.class, dss, "field_236193_d_"));
+            tempMap.putIfAbsent(ModStructures.LEMONTREASURE, dm.get(ModStructures.LEMONTREASURE));
+            ObfuscationReflectionHelper.setPrivateValue(DimensionStructuresSettings.class, dss, tempMap, "field_236193_d_");
         }
     }
 }

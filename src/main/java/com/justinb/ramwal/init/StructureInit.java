@@ -10,10 +10,12 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -59,12 +61,12 @@ public class StructureInit {
          *
          * NOISE_AFFECTING_FEATURES requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
          */
+
         if(transformSurroundingLand){
-            Structure.field_236384_t_ =
-                    ImmutableList.<Structure<?>>builder()
-                            .addAll(Structure.field_236384_t_)
-                            .add(structure)
-                            .build();
+            ObfuscationReflectionHelper.setPrivateValue(Structure.class, null, ImmutableList.<Structure<?>>builder()
+                    .addAll(Structure.field_236384_t_)
+                    .add(structure)
+                    .build(), "field_236384_t_");
         }
 
         /*
@@ -80,12 +82,11 @@ public class StructureInit {
          *
          * DEFAULTS requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
          */
-        DimensionStructuresSettings.field_236191_b_ =
-                ImmutableMap.<Structure<?>, StructureSeparationSettings>builder()
-                        .putAll(DimensionStructuresSettings.field_236191_b_)
-                        .put(structure, structureSeparationSettings)
-                        .build();
 
+        ObfuscationReflectionHelper.setPrivateValue(DimensionStructuresSettings.class, null, ImmutableMap.<Structure<?>, StructureSeparationSettings>builder()
+                .putAll(DimensionStructuresSettings.field_236191_b_)
+                .put(structure, structureSeparationSettings)
+                .build(), "field_236191_b_");
 
         /*
          * There are very few mods that relies on seeing your structure in the noise settings registry before the world is made.
@@ -95,7 +96,10 @@ public class StructureInit {
          * So yeah, don't do DimensionSettings.BUILTIN_OVERWORLD. Use the NOISE_GENERATOR_SETTINGS loop below instead if you must.
          */
         WorldGenRegistries.NOISE_SETTINGS.getEntries().forEach(settings -> {
-            Map<Structure<?>, StructureSeparationSettings> structureMap = settings.getValue().getStructures().field_236193_d_;
+            DimensionStructuresSettings d = settings.getValue().getStructures();
+
+
+            Map<Structure<?>, StructureSeparationSettings> structureMap = ObfuscationReflectionHelper.getPrivateValue(DimensionStructuresSettings.class, d, "field_236193_d_");
 
             /*
              * Pre-caution in case a mod makes the structure map immutable like datapacks do.
@@ -106,7 +110,7 @@ public class StructureInit {
             if(structureMap instanceof ImmutableMap){
                 Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(structureMap);
                 tempMap.put(structure, structureSeparationSettings);
-                settings.getValue().getStructures().field_236193_d_ = tempMap;
+                ObfuscationReflectionHelper.setPrivateValue(DimensionStructuresSettings.class, d, tempMap, "field_236193_d_");
             }
             else{
                 structureMap.put(structure, structureSeparationSettings);
